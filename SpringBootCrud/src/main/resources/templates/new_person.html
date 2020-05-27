@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Person</title>
+</head>
+<body>
+    <div align="center">
+     <a href="/">Home person</a>
+    <a href="/address/">Home address</a>
+        <h1>Create New Person</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${person}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" th:field="*{firstName}" /></td>
+                </tr>
+                <tr>
+                    <td>Middle Name:</td>
+                    <td><input type="text" th:field="*{middleName}" /></td>
+                </tr>
+                <tr>
+                    <td>LastName:</td>
+                    <td><input type="text" th:field="*{lastName}" /></td>
+                </tr>
+                 <tr>
+               <td> Role: </td>
+               
+                        <td><select th:field="*{role}" >
+                		<option th:each="role : ${listRole}" 
+                		 th:value="${role.id}"
+                		 th:text="${role.name}"
+                		 th:fiels="*{role}"
+                	
+                </td>
+                <tr>
+                 
+                
+                <tr>
+               <td> Address: </td>
+               
+               
+                        
+                        <td><select th:field="*{address}" >
+                		<option th:each="address : ${listAddress}" 
+                		 th:value="${address.id}"
+                		 th:text="${address.street}+' '+${address.number}"
+                		 th:fiels="*{address}"
+                	
+                          
+                
+                </td>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
